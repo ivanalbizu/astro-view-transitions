@@ -10,27 +10,25 @@ const slug = product.slug;
 ---
 
 <div>
-  <article class="transition-all">
-    <div class="">
-      <a
-        href={`/product/${product.slug}`}
-        class=""
-        transition:name={`${slug} image`}>
-        <img src={`${product.img}`} width="300" height="200" alt="" />
+  <article>
+    <a
+      href={`/product/${product.slug}`}
+      class=""
+      transition:name={`${slug} image`}>
+      <img src={`${product.img}`} width="300" height="200" alt="" />
+    </a>
+    <h3 class="title-product" transition:name={`${slug} title`}>
+      <a href={`/product/${product.slug}`}>
+        {product.name}
       </a>
-      <h3 class="title-product" transition:name={`${slug} title`}>
-        <a href={`/product/${product.slug}`}>
-          {product.name}
-        </a>
-      </h3>
-      <p class="transition-all" transition:name={`${slug} description`}>
-        {product.description}
-      </p>
-      <div class="" transition:name={`${slug} actions`}>
-        <span class="">{product.price} €</span>
-        <div>
-          <button type="button" class="btn">Add to cart</button>
-        </div>
+    </h3>
+    <p transition:name={`${slug} description`}>
+      {product.description}
+    </p>
+    <div class="product-actions" transition:name={`${slug} actions`}>
+      <span class="">{product.price} €</span>
+      <div>
+        <button type="button" class="btn">Add to cart</button>
       </div>
     </div>
   </article>
@@ -39,8 +37,15 @@ const slug = product.slug;
 <style>
   .title-product {
     font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1.4;
+    margin-top: 4px;
     margin-bottom: 8px;
-    color: red;
+  }
+  .product-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
   }
 </style>

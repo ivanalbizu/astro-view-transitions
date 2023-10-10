@@ -37,7 +37,7 @@ const product = products.find((product) => product.slug === slug) as Product;
           <button type="button" class="btn">Add to cart</button>
         </div>
       </div>
-      <div class="animate-in">
+      <div class="notes animate-in">
         {product.notes}
       </div>
     </article>
@@ -47,10 +47,13 @@ const product = products.find((product) => product.slug === slug) as Product;
 <style>
   .product {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 16px;
 
+    @media(min-width: 575px) {
+      grid-template-columns: 1fr 3fr;
+    }
     &__content {
       display: grid;
       gap: 16px;
@@ -67,12 +70,18 @@ const product = products.find((product) => product.slug === slug) as Product;
 
   .title-product {
     font-size: 1.8rem;
+    font-weight: 500;
     line-height: 1.2;
     margin-bottom: 16px;
-    color: blue;
   }
   .display-p {
     font-size: 1rem;
     margin-bottom: 16px;
+  }
+  .notes {
+    font-style: italic;
+    font-size: .9rem;
+    margin-top: 24px;
+    color: #141414;
   }
 </style>
