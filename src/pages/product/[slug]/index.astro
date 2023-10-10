@@ -20,7 +20,7 @@ const product = products.find((product) => product.slug === slug) as Product;
 <Layout title={product.name} description={product.description}>
   <section class="product">
     <figure class="product__img" transition:name={`${slug} image`}>
-      <img src="/300x400.png" width="300" height="400" alt="" />
+      <img src={`${product.imgFull}`} width="300" height="400" alt="" />
     </figure>
     <article class="product__content">
       <h1 class="title-product" transition:name={`${slug} title`}>
@@ -38,10 +38,7 @@ const product = products.find((product) => product.slug === slug) as Product;
         </div>
       </div>
       <div class="animate-in">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt
-        magnam quia, explicabo dolor velit aut omnis natus consequatur
-        possimus fuga illo commodi asperiores dignissimos. Consequuntur nam
-        quae commodi quas, magni
+        {product.notes}
       </div>
     </article>
   </section>
