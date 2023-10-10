@@ -1,0 +1,52 @@
+---
+import type { Product } from "../data";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const slug = product.slug;
+---
+
+<div>
+  <article class="transition-all">
+    <div class="">
+      <a href={`/product/${product.slug}`} class="" transition:name={`${slug} image`}>
+        <img
+          src="/300x200.png"
+          width="300" height="200"
+          alt="">
+      </a>
+      <h3
+        class="title-product"
+        transition:name={`${slug} title`}
+      >
+        <a href={`/product/${product.slug}`}>
+          {product.name}
+        </a>
+      </h3>
+      <p
+        class="transition-all"
+        transition:name={`${slug} description`}
+      >
+        {product.description}
+      </p>
+      <div class="" transition:name={`${slug} actions`}>
+        <span class="">{product.price} €</span>
+        <div>
+          <button type="button" class="btn">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<style>
+  .title-product {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: red;
+  }
+</style>

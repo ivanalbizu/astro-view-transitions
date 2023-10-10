@@ -1,0 +1,81 @@
+---
+import { type Product, products } from '../../../data';
+import Layout from '../../../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+
+export function getStaticPaths() {
+  return [
+    ...products.map((product) => ({
+      params: {
+        slug: product.slug,
+      },
+    })),
+  ];
+}
+
+const product = products.find((product) => product.slug === slug) as Product;
+---
+
+<Layout title={product.name} description={product.description}>
+  <section class="product">
+    <figure class="product__img" transition:name={`${slug} image`}>
+      <img src="/300x400.png" width="300" height="400" alt="" />
+    </figure>
+    <article class="product__content">
+      <h1 class="title-product" transition:name={`${slug} title`}>
+        {product.name}
+      </h1>
+      <p class="display-p" transition:name={`${slug} description`}>
+        {product.description}
+      </p>
+      <div class="product-actions" transition:name={`${slug} actions`}>
+        <div class="">
+          {product.price} €
+        </div>
+        <div>
+          <button type="button" class="btn">Add to cart</button>
+        </div>
+      </div>
+      <div class="animate-in">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt
+        magnam quia, explicabo dolor velit aut omnis natus consequatur
+        possimus fuga illo commodi asperiores dignissimos. Consequuntur nam
+        quae commodi quas, magni
+      </div>
+    </article>
+  </section>
+</Layout>
+
+<style>
+  .product {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+
+    &__content {
+      display: grid;
+      gap: 16px;
+    }
+  }
+
+  .product-actions {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .title-product {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: blue;
+  }
+  .display-p {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import Counter from "../components/Counter.vue";
+---
+
+<footer>
+  <div transition:persist transition:name="vue footer">
+    <Counter client:visible>VUE Footer counter: </Counter>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: grid;
+    place-content: center;
+    min-height: 200vh;
+    background-color: #fff;
+    font-size: 30px;
+  }
+</style>

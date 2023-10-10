@@ -1,0 +1,82 @@
+---
+import Counter from "../components/Counter.vue";
+---
+
+<header class="header container">
+  <a href="/">LOGO</a>
+  <form class="search-input" transition:persist transition:name="search-input">
+    <div class="input-group">
+      <input
+        type="search"
+        placeholder="Type to search (transition:persist)"
+        name=""
+        id=""
+      />
+      <button class="submit" type="submit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          ><path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M29 3L3 15l12 2.5M29 3L19 29l-4-11.5M29 3L15 17.5"></path></svg
+        >
+      </button>
+    </div>
+  </form>
+  <ul class="nav">
+    <li>
+      <a href="#!">Menu 1</a>
+    </li>
+    <li>
+      <a href="#!">Menu 2</a>
+    </li>
+  </ul>
+  <div transition:persist transition:name="vue">
+    <Counter client:visible>VUE counter: </Counter>
+  </div>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    min-height: 38px;
+    margin-bottom: 42px;
+    border-bottom: 1px solid currentColor;
+  }
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+  }
+  .search-input {
+    margin-left: auto;
+  }
+  input[type='search'] {
+    min-width: 256px;
+  }
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    align-items: center;
+    border-bottom: 1px solid #8f8f8f;
+  }
+  .submit {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .submit svg {
+    width: inherit;
+    height: inherit;
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { products } from "../data";
+import ProductCard from "../components/ProductCard.astro";
+---
+
+<Layout title="Shop">
+  <div class="products">
+    {products.map((product) => <ProductCard {product} />)}
+  </div>
+</Layout>
+
+<style>
+	.products {
+		--col: 1;
+		display: grid;
+		grid-template-columns: repeat(var(--col), 1fr);
+		gap: 8px;
+
+		@media(min-width: 575px) {
+			--col: 2;	
+		}
+		@media(min-width: 768px) {
+			--col: 4;	
+		}
+	}
+</style>

@@ -1,0 +1,16 @@
+{
+  "name": "c-users-marianog-documents-personal-astro-view-transition",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^3.0.1",
+    "astro": "^3.2.3"
+  }
+}

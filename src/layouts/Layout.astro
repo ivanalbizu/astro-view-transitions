@@ -1,0 +1,129 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import { ViewTransitions } from "astro:transitions";
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "A simple Shop built in Astro using View Transitions and TailwindCSS",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - Astro Transitions Shop</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <Header />
+    <main class="main container">
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      *:where(:not(html, iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+        all: unset;
+        display: revert;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      a, button {
+        cursor: revert;
+      }
+      ol, ul, menu {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      textarea {
+        white-space: revert;
+      }
+      meter {
+        -webkit-appearance: revert;
+        appearance: revert;
+      }
+      ::placeholder {
+        color: unset;
+      }
+      :where([hidden]) {
+        display: none;
+      }
+      :where([contenteditable]) {
+        -moz-user-modify: read-write;
+        -webkit-user-modify: read-write;
+        overflow-wrap: break-word;
+        -webkit-line-break: after-white-space;
+      }
+      :where([draggable="true"]) {
+        -webkit-user-drag: element;
+      }
+      :root {
+        --theme-color: dark;
+        --color-gray: #f1f1f1;
+      }
+      body {
+        background-color: var(--color-gray);
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .animate-in {
+        animation: animate-in 0.5s ease-in-out;
+      }
+      .transition-all {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        transition-duration: .15s;
+      }
+
+      @keyframes animate-in {
+        0% {
+          opacity: 0;
+          transform: translateY(1rem);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        width: min(1400px, 98%);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .main {
+        padding-bottom: 32px;
+      }
+      .btn {
+        font-size: .9rem;
+        color: #fff;
+        background-color: #000;
+        padding: 4px 16px;
+      }
+    </style>
+  </body>
+</html>
