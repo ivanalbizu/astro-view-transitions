@@ -13,6 +13,9 @@
     "@astrojs/vue": "^3.0.1",
     "astro": "^3.2.3"
   },
+  "devDependencies": {
+    "@types/node": "18.15.0"
+  },
   "engines": {
     "node": "18.15.0"
   }
